@@ -45,9 +45,8 @@
 #define BASE     0
 #define NUMNAV   1
 #define SYM      2
-#define MED      3
+#define MOUSE    3
 #define SETTINGS 4
-#define MOUSE    5
 
 / {
     behaviors {
@@ -212,20 +211,6 @@
             key-positions = <39 40>;
             bindings = <&mo SETTINGS>;
         };
-
-        // All 3 left thumbs = Media layer (36 + 37 + 38)
-        combo_media {
-            timeout-ms = <300>;
-            key-positions = <36 37 38>;
-            bindings = <&mo MED>;
-        };
-
-        // All 3 right thumbs = Media layer (39 + 40 + 41)
-        combo_media_right {
-            timeout-ms = <300>;
-            key-positions = <39 40 41>;
-            bindings = <&mo MED>;
-        };
     };
 
     keymap {
@@ -296,39 +281,11 @@
         };
 
         // ========================================
-        // LAYER 3: MEDIA + SYSTEM
-        // ========================================
-        // Access via combo: both inner thumbs (37 + 40)
-        layer_Media {
-            display-name = "Media";
-            bindings = <
-                &none  &none     &none     &none      &none      &none        &none  &none          &none          &none          &bootloader  &none
-                &none  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &none        &none  &kp C_MUTE     &kp C_VOL_DN   &kp C_VOL_UP   &none        &none
-                &none  &none     &none     &none      &none      &none        &none  &kp C_PREV     &kp C_PP       &kp C_NEXT     &none        &none
-                                            &trans     &none      &none        &none  &none          &trans
-            >;
-        };
-
-        // ========================================
-        // LAYER 4: SETTINGS (BT + System)
-        // ========================================
-        // Access via combo: both left thumbs (36+37) OR both right thumbs (40+41)
-        layer_Settings {
-            display-name = "Sett.";
-            bindings = <
-                &none  &bootloader  &none  &none  &bt BT_CLR   &bt BT_SEL 0     &bt BT_SEL 3  &none  &none  &none  &bootloader  &none
-                &none  &none        &none  &none  &none        &bt BT_SEL 1     &bt BT_SEL 4  &none  &none  &none  &none        &none
-                &none  &sys_reset   &none  &none  &none        &bt BT_SEL 2     &bt BT_SEL 5  &none  &none  &none  &sys_reset   &none
-                                           &trans &none        &none            &none         &none  &trans
-            >;
-        };
-
-        // ========================================
-        // LAYER 5: MOUSE (touchpad = scroll)
+        // LAYER 3: MOUSE (touchpad = scroll)
         // ========================================
         // Access via hold: outer thumbs (36 or 41)
         // Touchpad becomes scroll wheel in this layer
-        // Other thumbs = right click, left click
+        // Other thumbs = right click, middle click
         layer_Mouse {
             display-name = "Mouse";
             bindings = <
@@ -336,6 +293,20 @@
                 &none  &none  &none  &none  &none  &none        &none  &none  &none  &none  &none  &none
                 &none  &none  &none  &none  &none  &none        &none  &none  &none  &none  &none  &none
                               &trans  &mkp RCLK  &mkp MCLK      &mkp MCLK  &mkp RCLK  &trans
+            >;
+        };
+
+        // ========================================
+        // LAYER 4: SETTINGS (BT + System)
+        // ========================================
+        // Access via combo: 37+38 (left) or 39+40 (right)
+        layer_Settings {
+            display-name = "Sett.";
+            bindings = <
+                &none  &bootloader  &none  &none  &bt BT_CLR   &bt BT_SEL 0     &bt BT_SEL 3  &none  &none  &none  &bootloader  &none
+                &none  &none        &none  &none  &none        &bt BT_SEL 1     &bt BT_SEL 4  &none  &none  &none  &none        &none
+                &none  &sys_reset   &none  &none  &none        &bt BT_SEL 2     &bt BT_SEL 5  &none  &none  &none  &sys_reset   &none
+                                           &trans &none        &none            &none         &none  &trans
             >;
         };
 
