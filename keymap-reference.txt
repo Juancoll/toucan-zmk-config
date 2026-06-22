@@ -1,0 +1,307 @@
+Sweep 34-Key Layout Reference (v2: Symmetric Thumbs)
+=====================================================
+Fecha: 2026-05-13 (actualizado)
+SO: ES keyboard layout (Hyprland)
+Teclados: Corne v4.1 (QMK/VIAL), Go60 (ZMK), Urchin (ZMK + Studio)
+
+Notas: 34 teclas activas (3x5+2 por lado, layout Sweep/Urchin)
+       Los 3 teclados usan el mismo layout funcional.
+       Corne v4.1: QMK/VIAL (42 keys, columnas exteriores desactivadas)
+       Go60: ZMK (MoErgo Nix build)
+       Urchin: ZMK + ZMK Studio (GitHub Actions build)
+
+Diseño: Thumbs simétricos - NumNav y Sym accesibles desde ambos lados.
+        Permite uso con una sola mano (otra en ratón).
+
+
+CAPA 0: BASE (QWERTY + Home Row Mods)
+======================================
+
++------+------+------+------+------+       +------+------+------+------+------+
+|  Q   |  W   |  E   |  R   |  T   |       |  Y   |  U   |  I   |  O   |  P   |
++------+------+------+------+------+       +------+------+------+------+------+
+|GUI/A |ALT/S |CTL/D |SFT/F |  G   |       |  H   |SFT/J |CTL/K |ALT/L |GUI/ñ |
++------+------+------+------+------+       +------+------+------+------+------+
+|  Z   |  X   |  C   |  V   |  B   |       |  N   |  M   |  ,   |  .   |  -   |
++------+------+------+------+------+       +------+------+------+------+------+
+                      +------+------+       +------+------+
+                      |Sym/´ |NmNv/S|       |NmNv/E|Sym/` |
+                      +------+------+       +------+------+
+
+Notas capa 0:
+  GUI/ñ  = tap: ñ, hold: GUI               (KC_SCOLON en ES = ñ)
+  -      = guión                            (KC_SLASH en ES = -)
+  ,      = coma (Shift = ;)
+  .      = punto (Shift = :)
+  Sym/´  = tap: ´ (dead key acento agudo), hold: Capa 2 (Símbolos)
+  NmNv/S = tap: Space, hold: Capa 1 (NumNav)
+  NmNv/E = tap: Enter, hold: Capa 1 (NumNav)
+  Sym/`  = tap: ` (dead key acento grave), hold: Capa 2 (Símbolos)
+
+  Thumbs simétricos:
+    Sym accesible desde AMBOS thumbs externos (´ izq, ` der)
+    NumNav accesible desde AMBOS thumbs internos (Space izq, Enter der)
+    → Cualquier tecla accesible con una sola mano
+
+
+CAPA 1: NUMNAV (Números + F-keys + Navegación + Math)
+========================================================
+Acceso: hold Space (thumb izq inner) O hold Enter (thumb der inner)
+
++------+------+------+------+------+       +------+------+------+------+------+
+| F1/1 | F2/2 | F3/3 | F4/4 | F5/5 |       | F6/6 | F7/7 | F8/8 | F9/9 |F10/0 |
++------+------+------+------+------+       +------+------+------+------+------+
+| GUI  | ALT  | CTL  | SFT  |      |       |Hm/Lf|PD/Dn|PU/Up|End/Rt| F11  |
++------+------+------+------+------+       +------+------+------+------+------+
+|  /   |  *   |  -   |  +   |  =   |       |  (   |  )   |  ,   |  .   | F12  |
++------+------+------+------+------+       +------+------+------+------+------+
+                      +------+------+       +------+------+
+                      |      | #### |       | #### |      |
+                      +------+------+       +------+------+
+
+Notas capa 1:
+  Fila superior: tap = número, HOLD = F-key (tap-preferred, 200ms)
+    Tap rápido 1 → "1"
+    Mantener 1  → "F1"
+  HRM izquierda para mod+flechas/números (ej: Ctrl+Left = saltar palabra)
+  Flechas en home row derecha con hold-tap (ht_nav, tap-preferred, 300ms):
+    Tap LEFT  → flecha izq,  Hold LEFT  → Home
+    Tap DOWN  → flecha abajo, Hold DOWN  → PgDn
+    Tap UP    → flecha arriba, Hold UP    → PgUp
+    Tap RIGHT → flecha der,  Hold RIGHT → End
+    quick-tap-ms=200 permite autorepeat (tap-then-hold)
+  Math operators en fila inferior izquierda (ES keycodes):
+    /  = LS(N7)    *  = LS(RBKT)   -  = FSLH
+    +  = RBKT      =  = LS(N0)
+  Paréntesis y decimales en fila inferior derecha:
+    (  = LS(N8)    )  = LS(N9)     ,  = COMMA    .  = DOT
+  F11 en posición ñ (home row der), F12 en posición - (bottom der)
+  #### = thumb que activó la capa (transparente)
+
+  Uso con una mano:
+    Mano izq: hold Space + tap 1-5 = números, hold 1-5 = F1-F5
+    Mano der: hold Enter + tap 6-0 = números, hold 6-0 = F6-F10
+    Mano der: hold Enter + flechas, hold flechas = Home/End/PgDn/PgUp
+
+
+CAPA 2: SÍMBOLOS (ES layout)
+=================================================
+Acceso: hold ´ (thumb izq outer) O hold ` (thumb der outer)
+
+Lo que ves:
++------+------+------+------+------+       +------+------+------+------+------+
+|  |   |  @   |  #   |  ~   |  %   |       |  &   |  /   |  (   |  )   |  =   |
++------+------+------+------+------+       +------+------+------+------+------+
+|  !   |  "   |  {   |  }   |  +   |       |  '   |  ´   |  `   |  ^   |  ¨   |
++------+------+------+------+------+       +------+------+------+------+------+
+|  \   |  $   |  [   |  ]   |  *   |       |  ?   |  <   |  >   |  ¿   |  ¡   |
++------+------+------+------+------+       +------+------+------+------+------+
+                      +------+------+       +------+------+
+                      | #### |      |       |      | #### |
+                      +------+------+       +------+------+
+
+Keycodes ZMK → Carácter en ES:
+  Fila superior izquierda:
+    |  = RA(N1)               @  = RA(N2)
+    #  = RA(N3)               ~  = RA(N4)
+    %  = LS(N5)
+  Fila superior derecha:
+    &  = LS(N6)               /  = LS(N7)
+    (  = LS(N8)               )  = LS(N9)
+    =  = LS(N0)
+  Home row izquierda:
+    !  = LS(N1)               "  = LS(N2)
+    {  = RA(SQT)              }  = RA(BSLH)
+    +  = RBKT
+  Home row derecha (dead keys + apóstrofo):
+    '  = MINUS (apóstrofo)
+    ´  = SQT (dead key acento agudo)
+    `  = LBKT (dead key acento grave)
+    ^  = LS(LBKT) (dead key circunflejo)
+    ¨  = LS(SQT) (dead key diéresis)
+  Fila inferior izquierda:
+    \  = RA(GRAVE)            $  = LS(N4)
+    [  = RA(LBKT)             ]  = RA(RBKT)
+    *  = LS(RBKT)
+  Fila inferior derecha:
+    ?  = LS(MINUS)            <  = NUBS
+    >  = LS(NUBS)             ¿  = LS(EQUAL)
+    ¡  = EQUAL
+
+  Uso con una mano:
+    Mano izq: hold ´ + teclas izq = |@#~%, !"{}+, \$[]*
+    Mano der: hold ` + teclas der = &/()=, '´`^¨, ?<>¿¡
+
+
+CAPA 3: MEDIA + SISTEMA (combo thumbs internos 31+32)
+=====================================================
+Acceso: pulsar ambos thumbs internos simultáneamente (Space + Enter)
+
++------+------+------+------+------+       +------+------+------+------+------+
+|      |      |      |      |      |       |      |      |      |      | Boot |
++------+------+------+------+------+       +------+------+------+------+------+
+| GUI  | ALT  | CTL  | SFT  |      |       |      | Mute | Vol- | Vol+ |      |
++------+------+------+------+------+       +------+------+------+------+------+
+|      |      |      |      |      |       |      | Prev | Play | Next |      |
++------+------+------+------+------+       +------+------+------+------+------+
+                      +------+------+       +------+------+
+                      |      |      |       |      |      |
+                      +------+------+       +------+------+
+
+Notas capa 3:
+  Boot = Bootloader (para flashear firmware)
+  HRM izquierda para mod+media
+  Acceso: combo ambos thumbs internos (31+32, timeout 200ms)
+
+
+CAPA 4: SETTINGS (BT + System)
+=========================================================
+Acceso: combo ambos thumbs izquierdos (30+31) O ambos thumbs derechos (32+33)
+Solo en Urchin y Go60 (ZMK). Corne usa VIAL.
+
++------+------+------+------+------+       +------+------+------+------+------+
+| Boot |      |      |BT_CLR|BT_0  |       | BT_3 |      |      |      | Boot |
++------+------+------+------+------+       +------+------+------+------+------+
+|      |      |      |      |BT_1  |       | BT_4 |      |      |      |      |
++------+------+------+------+------+       +------+------+------+------+------+
+|Reset |      |      |      |BT_2  |       | BT_5 |      |      |      |Reset |
++------+------+------+------+------+       +------+------+------+------+------+
+                      +------+------+       +------+------+
+                      |      |      |       |      |      |
+                      +------+------+       +------+------+
+
+Notas capa 4:
+  Boot = Bootloader (para flashear firmware)
+  Reset = sys_reset (reinicio del controlador)
+  BT_CLR = limpiar emparejamiento del perfil activo
+  BT_0..5 = seleccionar perfil Bluetooth
+  Acceso: combo ambos thumbs izquierdos (30+31, timeout 200ms)
+       O: combo ambos thumbs derechos (32+33, timeout 200ms)
+
+
+COMBOS (activos en TODAS las capas)
+====================================
+
+W + E = Esc           J + K = Backspace
+D + F = Tab           K + L = Delete
+F + G = Caps Word
+Z + X = Undo  (Ctrl+Z)
+X + C = Cut   (Ctrl+X)
+C + V = Copy  (Ctrl+C)
+V + B = Paste (Ctrl+V)
+
+Combo Media:    thumbs internos 31+32 (timeout 200ms) = &mo MEDIA
+Combo Settings: thumbs izq 30+31 O thumbs der 32+33 (timeout 200ms) = &mo SETTINGS
+
+Nota: los combos de home row usan keycodes mod-tap completos
+  (ej: LCTL_T(KC_D) + LSFT_T(KC_F) = Tab, no KC_D + KC_F)
+
+
+THUMBS RESUMEN
+===============
+
+                      +--------+--------+       +--------+--------+
+                      |NmNv/´  | Sym/Sp |       | Sym/En |NmNv/`  |
+                      +--------+--------+       +--------+--------+
+                      | outer  | inner  |       | inner  | outer  |
+                      +--------+--------+       +--------+--------+
+
+  Simétricos:
+    Outer (30, 33): tap=acento, hold=NumNav (capa 1)
+    Inner (31, 32): tap=Space/Enter, hold=Sym (capa 2)
+
+  Acceso con una mano:
+    NumNav: hold ´ (izq) o hold ` (der) + teclas del mismo lado
+    Sym: hold Space (izq) o hold Enter (der) + teclas del mismo lado
+
+  Combos de thumbs:
+    30+31 (ambos izq)  = Settings (BT, bootloader)
+    32+33 (ambos der)  = Settings (BT, bootloader)
+    31+32 (ambos inner) = Media (Vol, Play/Prev/Next)
+
+  2 acentos dead key en thumbs:
+    ´ (agudo)  - thumb izq outer  - español: á é í ó ú
+    ` (grave)  - thumb der outer  - programación: `code`, ```blocks```
+
+  ¨ (diéresis) y ^ (circunflejo) accesibles en Capa 2 (símbolos)
+
+
+QMK SETTINGS (solo Corne v4.1)
+================================
+
+Tapping Term (QSID 7):    250ms  (tiempo para distinguir tap vs hold)
+Combo Term (QSID 2):       50ms  (ventana para activar combos)
+
+Nota: Solo Tapping Term y Combo Term están soportados por el firmware
+      VIAL del Corne v4.1. Permissive Hold, Quick Tap Term, Retro
+      Tapping, Chordal Hold y Flow Tap NO están compilados.
+
+
+ZMK BEHAVIORS (Urchin/Go60)
+==============================
+
+hml/hmr (Home Row Mods):
+  flavor: balanced
+  tapping-term-ms: 250
+  quick-tap-ms: 175
+  require-prior-idle-ms: 150
+  hold-trigger-on-release: yes
+
+ltl/ltr (Layer Tap thumbs):
+  flavor: balanced
+  tapping-term-ms: 250
+  quick-tap-ms: 175
+
+ht_num (Numbers/F-keys en capa NumNav):
+  flavor: tap-preferred
+  tapping-term-ms: 200
+  Tap = número, Hold = F-key
+
+
+MATRIZ VIAL (referencia técnica, solo Corne)
+=============================================
+
+Corne v4 matrix: 8 rows x 7 cols
+  Rows 0-2: left alphas    Rows 4-6: right alphas (cols REVERSED)
+  Row 3: left thumbs        Row 7: right thumbs
+  Thumb cols: 3=outer, 4=mid, 5=inner
+  -1 positions are physical placeholders (no key)
+
+
+PANTALLA NICE!VIEW (solo Urchin)
+=================================
+
+La pantalla nice!view del Urchin muestra:
+
+  +---------------------------+
+  | [bat] [USB/BT]       [lk] |  <- Iconos de estado
+  |  ~~~~~~~~~~~~~~~~~~~~~~~~  |  <- Gráfico batería (sparkline)
+  |   (1)    2                 |  <- Perfiles BT
+  |    3    ●4                 |
+  |   Base                     |  <- Capa activa
+  +---------------------------+
+
+Capas mostradas: Base, NmNv, Sym, Media, Sett.
+
+Perfiles Bluetooth (1-5):
+  - (N) = perfil seleccionado pero no conectado
+  - ●N  = perfil conectado activamente
+  - N   = perfil sin emparejar
+  Cambiar perfil: Settings layer + BT_SEL 0..5
+
+
+ZMK STUDIO (solo Urchin)
+=========================
+
+ZMK Studio permite editar el keymap visualmente desde el navegador.
+URL: https://zmk.studio/
+Requiere: Chrome/Chromium (WebSerial API), USB conectado al lado izquierdo.
+
+Configuración:
+  - snippet: studio-rpc-usb-uart (solo left en build.yaml)
+  - cmake-args: -DCONFIG_ZMK_STUDIO=y (solo left en build.yaml)
+  - CONFIG_ZMK_STUDIO_LOCKING=n en urchin.conf (sin unlock, conexión directa)
+  - 2 capas reservadas (layers 5-6) para edición desde Studio
+  - Regla udev: /etc/udev/rules.d/99-zmk.rules (permisos serial automáticos)
+
+Conexión: abrir https://zmk.studio/, conectar via WebSerial, entra directamente.
