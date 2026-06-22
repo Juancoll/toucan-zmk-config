@@ -46,7 +46,6 @@
 #define NUMNAV   1
 #define SYM      2
 #define MOUSE    3
-#define SETTINGS 4
 
 / {
     behaviors {
@@ -195,22 +194,6 @@
             key-positions = <20 21>;
             bindings = <&kp DEL>;
         };
-
-        // Sym + NumNav left = Settings layer (37 + 38)
-        // Same as Urchin (30+31) - both are &ltl hold-taps
-        combo_settings {
-            timeout-ms = <200>;
-            key-positions = <37 38>;
-            bindings = <&mo SETTINGS>;
-        };
-
-        // NumNav + Sym right = Settings layer (39 + 40)
-        // Same as Urchin (32+33) - both are &ltr hold-taps
-        combo_settings_right {
-            timeout-ms = <200>;
-            key-positions = <39 40>;
-            bindings = <&mo SETTINGS>;
-        };
     };
 
     keymap {
@@ -281,37 +264,25 @@
         };
 
         // ========================================
-        // LAYER 3: MOUSE (touchpad = scroll)
+        // LAYER 3: MOUSE & SETTINGS
         // ========================================
         // Access via hold: outer thumbs (36 or 41)
-        // Touchpad becomes scroll wheel in this layer
-        // Other thumbs = right click, middle click
+        // Touchpad = scroll, thumbs = mouse buttons
+        // Top row: bootloader + BT
+        // Bottom row: sys_reset
+        // TEST: pos 37 = &kp A (if 'a' types, layer works; if not, layer isn't activating)
         layer_Mouse {
             display-name = "Mouse";
             bindings = <
-                &none  &none  &none  &none  &none  &none        &none  &none  &none  &none  &none  &none
-                &none  &none  &none  &none  &none  &none        &none  &none  &none  &none  &none  &none
-                &none  &none  &none  &none  &none  &none        &none  &none  &none  &none  &none  &none
-                              &trans  &mkp RCLK  &mkp MCLK      &mkp MCLK  &mkp RCLK  &trans
+                &none  &bootloader  &none        &none        &bt BT_CLR   &bt BT_SEL 0     &bt BT_SEL 3  &none        &none        &none        &bootloader  &none
+                &none  &none        &none        &none        &bt BT_SEL 1 &bt BT_SEL 2     &bt BT_SEL 4  &bt BT_SEL 5 &none        &none        &none        &none
+                &none  &sys_reset   &none        &none        &none        &none            &none         &none        &none        &none        &sys_reset   &none
+                                    &trans       &kp A        &mkp RCLK                     &mkp RCLK     &kp A        &trans
             >;
         };
 
         // ========================================
-        // LAYER 4: SETTINGS (BT + System)
-        // ========================================
-        // Access via combo: 37+38 (left) or 39+40 (right)
-        layer_Settings {
-            display-name = "Sett.";
-            bindings = <
-                &none  &bootloader  &none  &none  &bt BT_CLR   &bt BT_SEL 0     &bt BT_SEL 3  &none  &none  &none  &bootloader  &none
-                &none  &none        &none  &none  &none        &bt BT_SEL 1     &bt BT_SEL 4  &none  &none  &none  &none        &none
-                &none  &sys_reset   &none  &none  &none        &bt BT_SEL 2     &bt BT_SEL 5  &none  &none  &none  &sys_reset   &none
-                                           &trans &none        &none            &none         &none  &trans
-            >;
-        };
-
-        // ========================================
-        // LAYERS 6-7: Reserved for ZMK Studio
+        // LAYERS 4-5: Reserved for ZMK Studio
         // ========================================
         extra_1 {
             status = "reserved";
