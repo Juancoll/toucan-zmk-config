@@ -197,32 +197,34 @@
             bindings = <&kp DEL>;
         };
 
-        // Both inner thumbs left = Media layer (37 + 38)
-        combo_media {
+        // Sym + NumNav left = Settings layer (37 + 38)
+        // Same as Urchin (30+31) - both are &ltl hold-taps
+        combo_settings {
             timeout-ms = <200>;
             key-positions = <37 38>;
-            bindings = <&mo MED>;
+            bindings = <&mo SETTINGS>;
         };
 
-        // Both inner thumbs right = Media layer (39 + 40)
-        combo_media_right {
+        // NumNav + Sym right = Settings layer (39 + 40)
+        // Same as Urchin (32+33) - both are &ltr hold-taps
+        combo_settings_right {
             timeout-ms = <200>;
             key-positions = <39 40>;
+            bindings = <&mo SETTINGS>;
+        };
+
+        // All 3 left thumbs = Media layer (36 + 37 + 38)
+        combo_media {
+            timeout-ms = <300>;
+            key-positions = <36 37 38>;
             bindings = <&mo MED>;
         };
 
-        // All 3 left thumbs = Settings layer (36 + 37 + 38)
-        combo_settings {
-            timeout-ms = <300>;
-            key-positions = <36 37 38>;
-            bindings = <&mo SETTINGS>;
-        };
-
-        // All 3 right thumbs = Settings layer (39 + 40 + 41)
-        combo_settings_right {
+        // All 3 right thumbs = Media layer (39 + 40 + 41)
+        combo_media_right {
             timeout-ms = <300>;
             key-positions = <39 40 41>;
-            bindings = <&mo SETTINGS>;
+            bindings = <&mo MED>;
         };
     };
 
@@ -326,14 +328,14 @@
         // ========================================
         // Access via hold: outer thumbs (36 or 41)
         // Touchpad becomes scroll wheel in this layer
-        // Other thumbs = right click, middle click
+        // Other thumbs = right click, left click
         layer_Mouse {
             display-name = "Mouse";
             bindings = <
                 &none  &none  &none  &none  &none  &none        &none  &none  &none  &none  &none  &none
                 &none  &none  &none  &none  &none  &none        &none  &none  &none  &none  &none  &none
                 &none  &none  &none  &none  &none  &none        &none  &none  &none  &none  &none  &none
-                              &trans  &mkp RCLK  &mkp LCLK      &mkp LCLK  &mkp RCLK  &trans
+                              &trans  &mkp RCLK  &mkp MCLK      &mkp MCLK  &mkp RCLK  &trans
             >;
         };
 
