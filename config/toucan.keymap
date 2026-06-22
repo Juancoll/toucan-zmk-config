@@ -197,24 +197,31 @@
             bindings = <&kp DEL>;
         };
 
-        // Both inner thumbs = Media layer (38 + 39)
+        // Both inner thumbs left = Media layer (37 + 38)
         combo_media {
             timeout-ms = <200>;
-            key-positions = <38 39>;
+            key-positions = <37 38>;
             bindings = <&mo MED>;
         };
 
-        // Mouse + Sym left = Settings layer (36 + 37)
+        // Both inner thumbs right = Media layer (39 + 40)
+        combo_media_right {
+            timeout-ms = <200>;
+            key-positions = <39 40>;
+            bindings = <&mo MED>;
+        };
+
+        // All 3 left thumbs = Settings layer (36 + 37 + 38)
         combo_settings {
             timeout-ms = <300>;
-            key-positions = <36 37>;
+            key-positions = <36 37 38>;
             bindings = <&mo SETTINGS>;
         };
 
-        // Sym + Mouse right = Settings layer (40 + 41)
+        // All 3 right thumbs = Settings layer (39 + 40 + 41)
         combo_settings_right {
             timeout-ms = <300>;
-            key-positions = <40 41>;
+            key-positions = <39 40 41>;
             bindings = <&mo SETTINGS>;
         };
     };
