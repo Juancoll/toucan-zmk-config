@@ -204,17 +204,17 @@
             bindings = <&mo MED>;
         };
 
-        // Sym + NumNav left = Settings layer (37 + 38)
+        // Mouse + Sym left = Settings layer (36 + 37)
         combo_settings {
-            timeout-ms = <200>;
-            key-positions = <37 38>;
+            timeout-ms = <300>;
+            key-positions = <36 37>;
             bindings = <&mo SETTINGS>;
         };
 
-        // NumNav + Sym right = Settings layer (39 + 40)
+        // Sym + Mouse right = Settings layer (40 + 41)
         combo_settings_right {
-            timeout-ms = <200>;
-            key-positions = <39 40>;
+            timeout-ms = <300>;
+            key-positions = <40 41>;
             bindings = <&mo SETTINGS>;
         };
     };
