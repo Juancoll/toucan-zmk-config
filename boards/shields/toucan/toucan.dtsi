@@ -2,6 +2,7 @@
 #include <dt-bindings/zmk/input_transform.h>
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <physical_layouts.dtsi>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
 
 
 / {
@@ -9,6 +10,16 @@
         zmk,kscan = &kscan0;
         zmk,physical-layout = &default_layout;
         //zmk,physical-layout = &physical_layout0;
+    };
+
+    input_processors {
+        // Remap trackpad tap from left click to right click
+        zip_click_to_right_click_mapper: zip_click_to_right_click_mapper {
+            compatible = "zmk,input-processor-code-mapper";
+            #input-processor-cells = <0>;
+            type = <INPUT_EV_KEY>;
+            map = <INPUT_BTN_0 INPUT_BTN_1>;
+        };
     };
 
     kscan0: kscan_0 {
@@ -108,6 +119,8 @@
         status = "disabled";
         device = <&glidepoint_split>;
         input-processors = <&zip_xy_scaler 250 100>;
+
+        // Layer MOUSE (3): movement becomes scroll
         scroller {
             layers = <3>;
             input-processors = <
@@ -115,6 +128,13 @@
                 &zip_scroll_scaler 1 5
                 &zip_scroll_transform INPUT_TRANSFORM_X_INVERT
             >;
+            process-next;
+        };
+
+        // Layer MOUSE (3): trackpad tap becomes right click
+        right_clicker {
+            layers = <3>;
+            input-processors = <&zip_click_to_right_click_mapper>;
         };
     };
 };

@@ -39,7 +39,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/pointing.h>
 
 // Layer definitions
 #define BASE     0
@@ -267,17 +266,16 @@
         // LAYER 3: MOUSE & SETTINGS
         // ========================================
         // Access via hold: outer thumbs (36 or 41)
-        // Touchpad = scroll, thumbs = mouse buttons
+        // Touchpad: movement = scroll, tap = RIGHT click
         // Top row: bootloader + BT
         // Bottom row: sys_reset
-        // TEST: pos 37 = &kp A (if 'a' types, layer works; if not, layer isn't activating)
         layer_Mouse {
             display-name = "Mouse";
             bindings = <
                 &none  &bootloader  &none        &none        &bt BT_CLR   &bt BT_SEL 0     &bt BT_SEL 3  &none        &none        &none        &bootloader  &none
                 &none  &none        &none        &none        &bt BT_SEL 1 &bt BT_SEL 2     &bt BT_SEL 4  &bt BT_SEL 5 &none        &none        &none        &none
                 &none  &sys_reset   &none        &none        &none        &none            &none         &none        &none        &none        &sys_reset   &none
-                                    &trans       &kp A        &mkp RCLK                     &mkp RCLK     &kp A        &trans
+                                    &trans       &none        &none                          &none         &none        &trans
             >;
         };
 
